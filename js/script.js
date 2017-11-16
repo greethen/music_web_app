@@ -80,7 +80,7 @@ function showSingleEvent(json){
     let ts = new Date(y, m-1, d);
 
     document.querySelector(".single-event h1").textContent=json.title.rendered;
-    document.querySelector(".single-event img").setAttribute("src", json._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url);
+    document.querySelector(".single-event img").setAttribute("src", json._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url);
     document.querySelector(".single-event .date").textContent= d+"."+m;
     document.querySelector(".single-event .starting-time").textContent=json.acf.starting_time;
     document.querySelector(".single-event .doors-open span").textContent=json.acf.doors_open;
@@ -117,10 +117,10 @@ function showEvents(data){
         //description.innerHTML = theEvent.content.rendered;
         //price.textContent = theEvent.acf.price;
         console.log(theEvent._embedded["wp:featuredmedia"][0].media_details.sizes);
-        img.setAttribute("src", theEvent._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url);
+        img.setAttribute("src", theEvent._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url);
 
         startingTime.textContent = theEvent.acf.starting_time;
-        smallDescription.textContent = theEvent.acf.small_description;
+        smallDescription.innerHTML = theEvent.acf.small_description;
         //doorsOpen.textContent = theEvent.acf.doors_open;
         //location.textContent = theEvent.acf.location;
         //facebookLink.setAttribute("href", theEvent.acf.facebook_link);
