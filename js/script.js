@@ -30,26 +30,26 @@ function removeOldEvents(){
 }
 
 function getAllEvents(){
-    fetch("http://marijabelautdinova.com/wp/wp-json/wp/v2/events?_embed&per_page=11")
+    fetch("http://gretagerulyte.com/wordpress/wp-json/wp/v2/events?_embed&per_page=20")
     .then(res=>res.json())
     .then(showEvents);
 }
 
 function getEventsByCategory(id){
-    fetch("http://marijabelautdinova.com/wp/wp-json/wp/v2/events?_embed&tags="+id)
+    fetch("http://gretagerulyte.com/wordpress/wp-json/wp/v2/events?_embed&tags="+id)
     .then(res=>res.json())
     .then(showEvents);
 };
 
 function getSingleEventById(myId){
     console.log(myId);
-    fetch("http://marijabelautdinova.com/wp/wp-json/wp/v2/events/"+myId+"/?_embed")
+    fetch("http://gretagerulyte.com/wordpress/wp-json/wp/v2/events/"+myId+"/?_embed")
     .then(res=>res.json())
     .then(showSingleEvent);
 };
 
 function getMenu(){
-  fetch("http://marijabelautdinova.com/wp/wp-json/wp/v2/tags")
+  fetch("http://gretagerulyte.com/wordpress/wp-json/wp/v2/tags")
   .then(e=>e.json())
   .then(showMenu);
 };
@@ -80,7 +80,7 @@ function showSingleEvent(json){
     let ts = new Date(y, m-1, d);
 
     document.querySelector(".single-event h1").textContent=json.title.rendered;
-    document.querySelector(".single-event img").setAttribute("src", json._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url);
+    document.querySelector(".single-event img").setAttribute("src", json._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url);
     document.querySelector(".single-event .date").textContent= d+"."+m;
     document.querySelector(".single-event .starting-time").textContent=json.acf.starting_time;
     document.querySelector(".single-event .doors-open span").textContent=json.acf.doors_open;
@@ -117,7 +117,7 @@ function showEvents(data){
         //description.innerHTML = theEvent.content.rendered;
         //price.textContent = theEvent.acf.price;
         console.log(theEvent._embedded["wp:featuredmedia"][0].media_details.sizes);
-        img.setAttribute("src", theEvent._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url);
+        img.setAttribute("src", theEvent._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url);
 
         startingTime.textContent = theEvent.acf.starting_time;
         smallDescription.textContent = theEvent.acf.small_description;
